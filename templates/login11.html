@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css"/>
+    <script type="text/javascript" src="../static/js/login.js"></script>
+
+    <script type="text/javascript">
+        function login() {
+            $.ajax({
+                type: "POST",
+                dataType: "json",//服务器返回的数据类型
+                contentType: "application/json",//post请求的信息格式
+                url: "/api/login" ,
+                data: $('#form1').serialize(),
+                success: function (result) {
+                    console.log(result);//在浏览器中打印服务端返回的数据(调试用)
+                    if (result.resultCode == 200) {
+                        alert("SUCCESS");
+                    };
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+<div id="login_frame">
+
+    <!-- <p id="image_logo"><img src="../img/backgroud.jpeg"></p > -->
+
+    <form id=form1 method="post" action="../static/js/login.js">
+
+        <p><label class="label_input">用户名</label><input type="text" id="username" class="text_field"/></p>
+        <p><label class="label_input">密码</label><input type="text" id="password" class="text_field"/></p>
+
+        <div id="login_control">
+            <input  type="button" value="登录" onclick="login()">
+            <a id="forget_pwd" href="forget_pwd.html">忘记密码？</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
