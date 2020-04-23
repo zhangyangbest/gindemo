@@ -36,7 +36,7 @@
                                                                               aria-describedby="sizing-addon1" />
     </div>
     <button type="button" class="btn btn-success btn-block">登录</button>
-    <a class="btn btn-sm btn-white btn-block" style="text-align: right;"  href="./register.html"><h6>还没有账户？前往注册</h6></a>
+    <a class="btn btn-sm btn-white btn-block" style="text-align: right;"  href="/register"><h6>还没有账户？前往注册</h6></a>
 </form>
 <script>
     $("#form1").on("click",".btn",function(e){
@@ -44,7 +44,7 @@
         var formData=$("#form1").serialize();
 
         $.ajax({
-            url:"/api/login",
+            url:"/login",
             type:"post",
             data:{"userName":$("#userName").val(),"password":$("#password").val()},
             dataType:"json",

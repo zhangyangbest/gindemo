@@ -29,11 +29,15 @@ func Router() {
 	r.LoadHTMLGlob("templates/*")
 	r.Static("static", "./static/")
 
-	routerG := r.Group("/api")
-	{
-		routerG.GET("/register", controllers.Register)
-		routerG.POST("/login", controllers.Login)
-	}
+	//routerG := r.Group("/api")
+	//{
+	//	routerG.GET("/register", controllers.Register)
+	//	routerG.POST("/login", controllers.Login)
+	//}
+	r.GET("/register", controllers.Register)
+	r.POST("/register", controllers.RegisterPostDate)
+	r.GET("/login", controllers.Login)
+	r.POST("/login", controllers.LoginPostData)
 
 	r.Run(":8080")
 }
